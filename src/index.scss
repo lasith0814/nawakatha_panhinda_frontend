@@ -1,0 +1,375 @@
+@import "./vendor/scss/variables.scss";
+@import "./vendor/css/all.css";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 16px;
+  font-weight: 500;
+  color: $font-color;
+  font-family: -apple-system, $font-family, "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+body {
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+a {
+  text-decoration: none;
+  color: $btn-primary;
+}
+
+p {
+  font-size: 1rem;
+}
+
+.form-group {
+  position: relative;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  transition: all 300ms ease;
+}
+
+.form-control {
+  position: relative;
+  width: 100%;
+  transition: all 300ms ease;
+  font-size: 1rem;
+
+  label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    transition: 100ms all ease-in;
+    z-index: 110;
+    cursor: text;
+
+    &.text {
+      top: -15px;
+      left: 0px;
+      transform: translate(0);
+      cursor: default;
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    pointer-events: none;
+    border: 0;
+    border-radius: $border-radius;
+    border-bottom: solid 1px $btn-primary;
+    z-index: 10;
+    transition: width 200ms ease-in;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    pointer-events: none;
+    border: 0;
+    border-radius: $border-radius;
+    border-bottom: solid 1px $btn-primary;
+    z-index: 11;
+    transition: width 200ms ease-in;
+  }
+  &.error {
+    &::after {
+      width: 100%;
+      z-index: 12;
+      font-size: 1rem;
+      border-bottom: solid 1px rgb(255, 0, 0);
+    }
+  }
+
+  &:focus-within {
+    &::before {
+      width: 100%;
+    }
+    label {
+      top: -15px;
+      left: 0px;
+      font-size: 0.8rem;
+      transform: translate(0);
+      cursor: default;
+    }
+  }
+
+  input {
+    padding: 10px 10px;
+    background: $input-primary;
+    border: none;
+    width: 100%;
+    border-radius: $border-radius;
+    position: relative;
+    box-shadow: 1px 1px 3px 2px $box-shadow-color;
+    transition: all 200ms ease-in;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .form-group {
+    width: 45%;
+    flex-direction: row;
+    .form-control {
+      width: 49%;
+    }
+  }
+  :not(.form-group) {
+    > .form-control {
+      width: 45%;
+    }
+  }
+
+  div .hr {
+    width: 30%;
+  }
+}
+
+.hr {
+  background: $font-color;
+  height: 1px;
+  width: 80%;
+  margin: 10px auto;
+}
+
+.flex {
+  width: 100%;
+  display: flex;
+  position: relative;
+  &.row {
+    flex-direction: row;
+  }
+  &.column {
+    flex-direction: column;
+  }
+  &.center {
+    justify-content: center;
+    align-items: center;
+  }
+  &.left {
+    justify-content: flex-start;
+    align-items: center;
+  }
+  &.right {
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+//btn
+
+.btn {
+  padding: 8px 20px;
+  font: 1em 300;
+  color: white;
+  border: none;
+  box-shadow: 1px 1px 3px 2px $box-shadow-color;
+  border-radius: $border-radius;
+  transition: all 100ms ease-in-out;
+  outline: none;
+  &.btn-primary {
+    background: $btn-primary;
+    &:hover {
+      background-color: darken($btn-primary, 5);
+    }
+    &:active {
+      background-color: darken($btn-primary, 13);
+    }
+  }
+  &.btn-secondry {
+    background: $btn-secondry;
+    &:hover {
+      background-color: darken($btn-secondry, 5);
+    }
+    &:active {
+      background-color: darken($btn-secondry, 13);
+    }
+  }
+}
+
+// margins
+
+.m {
+  &-5 {
+    margin: 5px;
+  }
+  &-10 {
+    margin: 10px;
+  }
+  &-15 {
+    margin: 15px;
+  }
+  &-20 {
+    margin: 20px;
+  }
+  &t {
+    &-5 {
+      margin-top: 5px;
+    }
+    &-10 {
+      margin-top: 10px;
+    }
+    &-15 {
+      margin-top: 15px;
+    }
+    &-20 {
+      margin-top: 20px;
+    }
+  }
+  &b {
+    &-5 {
+      margin-bottom: 5px;
+    }
+    &-10 {
+      margin-bottom: 10px;
+    }
+    &-15 {
+      margin-bottom: 15px;
+    }
+    &-20 {
+      margin-bottom: 20px;
+    }
+  }
+  &l {
+    &-5 {
+      margin-left: 5px;
+    }
+    &-10 {
+      margin-left: 10px;
+    }
+    &-15 {
+      margin-left: 15px;
+    }
+    &-20 {
+      margin-left: 20px;
+    }
+  }
+  &r {
+    &-5 {
+      margin-right: 5px;
+    }
+    &-10 {
+      margin-right: 10px;
+    }
+    &-15 {
+      margin-right: 15px;
+    }
+    &-20 {
+      margin-right: 20px;
+    }
+  }
+}
+
+// padding
+
+.p {
+  &-5 {
+    padding: 5px;
+  }
+  &-10 {
+    padding: 10px;
+  }
+  &-15 {
+    padding: 15px;
+  }
+  &-20 {
+    padding: 20px;
+  }
+  &t {
+    &-5 {
+      padding-top: 5px;
+    }
+    &-10 {
+      padding-top: 10px;
+    }
+    &-15 {
+      padding-top: 15px;
+    }
+    &-20 {
+      padding-top: 20px;
+    }
+  }
+  &b {
+    &-5 {
+      padding-bottom: 5px;
+    }
+    &-10 {
+      padding-bottom: 10px;
+    }
+    &-15 {
+      padding-bottom: 15px;
+    }
+    &-20 {
+      padding-bottom: 20px;
+    }
+  }
+  &l {
+    &-5 {
+      padding-left: 5px;
+    }
+    &-10 {
+      padding-left: 10px;
+    }
+    &-15 {
+      padding-left: 15px;
+    }
+    &-20 {
+      padding-left: 20px;
+    }
+  }
+  &r {
+    &-5 {
+      padding-right: 5px;
+    }
+    &-10 {
+      padding-right: 10px;
+    }
+    &-15 {
+      padding-right: 15px;
+    }
+    &-20 {
+      padding-right: 20px;
+    }
+  }
+}
+
+// *::-webkit-scrollbar {
+//   width: 20px;               /* width of the entire scrollbar */
+// }
+// *::-webkit-scrollbar-track {
+//   background: transparent;        /* color of the tracking area */
+// }
+// *::-webkit-scrollbar-thumb {
+//   background-color: blue;    /* color of the scroll thumb */
+//   border-radius: 20px;       /* roundness of the scroll thumb */
+//   border: 1px transparent;  /* creates padding around scroll thumb */
+// }

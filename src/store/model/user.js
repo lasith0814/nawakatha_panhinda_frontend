@@ -8,7 +8,11 @@ const getters = {
 
 const actions = {};
 
-const mutations = {};
+const mutations = {
+    setDataSet(state,data){
+        state.data = data;
+    }
+};
 
 export default {
     state,
